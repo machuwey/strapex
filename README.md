@@ -34,18 +34,27 @@ By contributing to this project, you agree to abide by the terms outlined in our
 
 ## **Dev Setup**
 
-After cloning the repository, duplicate both `.env.example` environment configuration files under `apps/supabase` and `apps/www`:
+After cloning the repository, duplicate the `.env.example` file for the web app:
 
 ```sh
-cp packages/database/supabase/.env.example packages/database/supabase/.env
 cp apps/www/.env.example apps/www/.env
 ```
 
-We use Docker to launch every components of Strapex in development mode, make sure to install Docker on your system then run `docker compose up` in the root directory.
-This command will launch everything needed to work with Strapex:
+### Start Supabase
+
+Initialize and start a local Supabase instance using the CLI:
+
+```sh
+pnpx supabase init
+pnpx supabase start
+```
+
+The commands above create a `supabase` folder and launch the Supabase stack.
+Supabase Studio will be available at http://localhost:8082.
+
+We use Docker to launch Katana and the frontend in development mode. Run `docker compose up` in the root directory to start these services:
 
 - Katana (Starknet Devnet) at http://localhost:5050 along with an explorer at http://localhost:5050/explorer
-- Supabase local development studio at http://localhost:8082
 - Strapex frontend at http://localhost:3333
 
 To interact with the Strapex contracts in the frontend, you will need to add the Katana Devnet in your Wallet networks:
